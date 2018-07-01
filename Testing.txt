@@ -1,9 +1,5 @@
-<<<<<<< HEAD
+
 hi*
-=======
 This is Dylan's Changes
-<<<<<<< HEAD
->>>>>>> master
-=======
-NEW CHANGE
->>>>>>> master
+
+
