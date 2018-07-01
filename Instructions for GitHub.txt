@@ -1,0 +1,23 @@
+To update your files on your computer's "master" branch:
+- Make sure current branch is "master"
+- Fetch origin
+
+To update your "personal branch" with the changes other people made to "master" branch:
+- Make sure current branch is your "personal branch"
+- !!!Make sure you've commited/deleted any changes so that the left window has 0 changes!!!
+- Update from default branch
+- Push to origin
+
+To make changes to your "personal branch"
+- Make changes!
+- On the left window there should be changes to files you can view
+- Write a description of what you changed
+- Commit to "personal branch"
+- Push to origin
+
+To upload those changes to the "master" branch
+- Make sure there are any gamebreaking bugs
+- Current branch = "master"
+- Compare to branch to your "personal branch"
+- Merge branch
+- Push to origin
