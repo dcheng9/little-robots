@@ -1,3 +1,0 @@
-E:\Unreal\Projects\Throbots\Source\Throbots\Throbots.Build.cs
-E:\Unreal\Projects\Throbots\Source\Throbots.Target.cs
-E:\Unreal\Projects\Throbots\Source\ThrobotsEditor.Target.cs
