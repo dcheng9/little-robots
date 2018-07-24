@@ -130,8 +130,15 @@ void AThrobotsPlayerController::MoveForward(float amount)
 void AThrobotsPlayerController::Turn(float amount)
 {
 	APawn* const MyPawn = GetPawn();
+
+	
+
 	if (MyPawn->Controller && amount)
 	{
-		MyPawn->AddMovementInput(MyPawn->GetActorRightVector(), amount);
+		FRotator ActorRotation = MyPawn->GetActorRotation();
+
+		ActorRotation.Yaw += amount;
+
+		MyPawn->SetActorRotation(ActorRotation);
 	}
 }
