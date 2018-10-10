@@ -118,12 +118,16 @@ void AThrobotsPlayerController::SetupInputComponent()
 //	bMoveToMouseCursor = false;
 //}
 
+// --------------MOVEMENT--------------
 void AThrobotsPlayerController::MoveForward(float amount)
 {
 	APawn* const MyPawn = GetPawn();
-	if (MyPawn->Controller && amount)
+	if (MyPawn)
 	{
-		MyPawn->AddMovementInput(MyPawn->GetActorForwardVector(), amount);
+		if (MyPawn->Controller && amount)
+		{
+			MyPawn->AddMovementInput(MyPawn->GetActorForwardVector(), amount);
+		}
 	}
 }
 
@@ -132,13 +136,15 @@ void AThrobotsPlayerController::Turn(float amount)
 	APawn* const MyPawn = GetPawn();
 
 	
-
-	if (MyPawn->Controller && amount)
+	if (MyPawn)
 	{
-		FRotator ActorRotation = MyPawn->GetActorRotation();
+		if (MyPawn->Controller && amount)
+		{
+			FRotator ActorRotation = MyPawn->GetActorRotation();
 
-		ActorRotation.Yaw += amount;
+			ActorRotation.Yaw += amount * 2;
 
-		MyPawn->SetActorRotation(ActorRotation);
+			MyPawn->SetActorRotation(ActorRotation);
+		}
 	}
 }

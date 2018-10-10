@@ -24,6 +24,19 @@ public:
 	/** Returns CursorToWorld subobject **/
 	FORCEINLINE class UDecalComponent* GetCursorToWorld() { return CursorToWorld; }
 
+
+	class AThrobotsCharacter* currentItem;
+
+	bool canMove;
+	bool holdingItem;
+
+	// DEBUG LINE
+	FVector _debugLineStart;
+	FVector _debugLineForwardVector;
+	FVector _debugLineEnd;
+
+	FCollisionQueryParams customCollisionParams;
+
 private:
 	/** Top down camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))

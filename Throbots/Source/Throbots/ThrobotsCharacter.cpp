@@ -12,8 +12,12 @@
 #include "Materials/Material.h"
 #include "Engine/World.h"
 
+#include "DrawDebugHelpers.h"
+
 AThrobotsCharacter::AThrobotsCharacter()
 {
+	customCollisionParams.AddIgnoredActor(this);
+
 	// Set size for player capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -60,6 +64,32 @@ AThrobotsCharacter::AThrobotsCharacter()
 void AThrobotsCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+
+	// --------------DEBUG LINE--------------
+	_debugLineStart = (GetCapsuleComponent()->GetComponentLocation());
+	_debugLineForwardVector = GetCapsuleComponent()->GetForwardVector();
+	_debugLineEnd = ((_debugLineForwardVector * 100.f) + _debugLineStart);
+
+
+	// --------------PICK UP--------------
+	if (!holdingItem)
+	{
+		FHitResult hit;
+		if (GetWorld()->LineTraceSingleByChannel(hit, _debugLineStart, _debugLineEnd, ECC_Pawn, customCollisionParams))
+		{
+			if (hit.GetActor()->GetClass()->IsChildOf(AThrobotsCharacter::StaticClass()))
+			{
+				currentItem = Cast<AThrobotsCharacter>(hit.GetActor());
+				DrawDebugLine(GetWorld(), _debugLineStart, _debugLineEnd, FColor::Red, false, 1, 0, 1);
+			}
+		}
+		else
+		{
+			currentItem = NULL;
+			DrawDebugLine(GetWorld(), _debugLineStart, _debugLineEnd, FColor::Green, false, 1, 0, 1);
+		}
+	}
+
 
 	if (CursorToWorld != nullptr)
 	{
